@@ -11,12 +11,9 @@
 @class BringBanksViewController;
 
 @interface BringBanksAppDelegate : NSObject <UIApplicationDelegate> {
-    UIWindow *window;
-    BringBanksViewController *viewController;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet BringBanksViewController *viewController;
 
 @end
 

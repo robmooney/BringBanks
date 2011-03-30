@@ -29,12 +29,24 @@
 
 - (NSString *)title {
     return self.location;
-	//return @" ";
 }
 
 - (NSString *)subtitle {
-    return self.area;
-	//return @" ";
+    NSMutableArray *materials = [NSMutableArray arrayWithCapacity:0];
+    
+    if (self.materialTypes & BringBankMaterialTypeGlass) {
+        [materials addObject:@"Glass"];
+    }
+    
+    if (self.materialTypes & BringBankMaterialTypeCans) {
+        [materials addObject:@"Cans"];
+    }    
+    
+    if (self.materialTypes & BringBankMaterialTypeTextiles) {
+        [materials addObject:@"Textiles"];
+    }
+    
+    return [materials componentsJoinedByString:@", "];
 }
 
 - (void)dealloc {

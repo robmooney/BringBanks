@@ -7,18 +7,72 @@
 //
 
 #import "BringBanksViewController.h"
-#import "BringBank.h"
-#import "ThreeOptionView.h"
 #import <CoreLocation/CoreLocation.h>
 #import <libxml/xmlreader.h>
 
 @implementation BringBanksViewController
 
-@synthesize mapView;
+@synthesize mapView = mapView_;
+@synthesize allBringBanksRegion = allBringBanksRegion_;
 
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+#pragma mark - View lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UIBarButtonItem *allButton = [[UIBarButtonItem alloc] initWithTitle:@"All" 
+                                                                  style:UIBarButtonItemStyleBordered 
+                                                                 target:self 
+                                                                 action:@selector(showAll:)];
+    
+    self.navigationItem.leftBarButtonItem = allButton;
+    
+    [allButton release];
+    
+    UIBarButtonItem *nearestButton = [[UIBarButtonItem alloc] initWithTitle:@"Nearest" 
+                                                                      style:UIBarButtonItemStyleBordered 
+                                                                     target:self 
+                                                                     action:@selector(showNearest:)];
+    self.navigationItem.rightBarButtonItem = nearestButton;
+    
+    [nearestButton release];
+    
+    if (bringBanks_ == nil) {
+        [self loadBringBanks];
+    }
+    
+}
+
+#pragma mark - Rotation support
+
+// Override to allow orientations other than the default portrait orientation.
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    // Return YES for supported orientations
+    return YES;
+}
+
+#pragma mark - Memory Management
+
+- (void)didReceiveMemoryWarning {
+	// Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+	
+	// Release any cached data, images, etc that aren't in use.
+}
+
+- (void)viewDidUnload {
+	self.mapView = nil;
+}
+
+- (void)dealloc {
+    [mapView_ release];
+    [bringBanks_ release];
+    [super dealloc];
+}
+
+#pragma mark - Bring banks
+
+- (void)loadBringBanks {
     
     NSMutableArray *tempBringBanks = [[NSMutableArray alloc] initWithCapacity:0];
     
@@ -26,7 +80,8 @@
     
     CLLocationCoordinate2D coord;
     
-    NSData *data = [[NSData alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"Bring_Banks" withExtension:@"kml"]];
+    NSData *data = [[NSData alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"Bring_Banks" 
+                                                                                 withExtension:@"kml"]];
     
     xmlTextReaderPtr reader = xmlReaderForMemory([data bytes], [data length], NULL, NULL, (XML_PARSE_NOBLANKS | XML_PARSE_NOCDATA | XML_PARSE_NOERROR | XML_PARSE_NOWARNING));
 	
@@ -81,18 +136,18 @@
 						currentTagValue = xmlTextReaderConstValue(reader);
                         
                         if (xmlStrEqual(currentNameAttr, BAD_CAST "ID_")) {    
-							                      
+                            
                             bringBank.ID = atof((const char *)currentTagValue);
                         }
                         
                         if (xmlStrEqual(currentNameAttr, BAD_CAST "WEIGHT")) {                            
                             bringBank.weight = atof((const char *)currentTagValue);
                         }
-                            
+                        
                         if (xmlStrEqual(currentNameAttr, BAD_CAST "GIS_ID")) {                            
                             bringBank.GISID = [NSString stringWithUTF8String:(const char *)currentTagValue];
                         }
-                            
+                        
                         if (xmlStrEqual(currentNameAttr, BAD_CAST "ELECTORAL_Area")) {                            
                             bringBank.electoralArea = [NSString stringWithUTF8String:(const char *)currentTagValue];
                         } 
@@ -100,15 +155,15 @@
                         if (xmlStrEqual(currentNameAttr, BAD_CAST "LOCATION")) {                            
                             bringBank.location = [NSString stringWithUTF8String:(const char *)currentTagValue];
                         } 
-                            
+                        
                         if (xmlStrEqual(currentNameAttr, BAD_CAST "AREA")) {                            
                             bringBank.area = [NSString stringWithUTF8String:(const char *)currentTagValue];
                         }
-                            
+                        
                         if (xmlStrEqual(currentNameAttr, BAD_CAST "GLASS_OPER")) {                            
                             bringBank.operatorName = [NSString stringWithUTF8String:(const char *)currentTagValue];
                         }
-                            
+                        
                         if (xmlStrEqual(currentNameAttr, BAD_CAST "GLASS")) {
                             if (xmlStrEqual(currentTagValue, BAD_CAST "Y")) {
 								bringBank.materialTypes += BringBankMaterialTypeGlass;
@@ -133,8 +188,7 @@
                         
                         if (xmlStrEqual(currentNameAttr, BAD_CAST "LONG")) {
                             coord.longitude = atof((const char *)currentTagValue);
-                        }                 
-                        
+                        }
                         
 					}
 					
@@ -145,106 +199,109 @@
 	xmlTextReaderClose(reader);
     xmlFreeTextReader(reader);
     
-    bringBanks = [tempBringBanks copy];
+    bringBanks_ = [tempBringBanks copy];
     
     [tempBringBanks release];
-	
-	
-	CLLocationDegrees minLat = 90.0;
-	CLLocationDegrees maxLat = -90.0;
-	CLLocationDegrees minLon = 180.0;
-	CLLocationDegrees maxLon = -180.0;
-	
-	for (id <MKAnnotation> annotation in bringBanks) {
-		if (annotation.coordinate.latitude != 0 && annotation.coordinate.longitude != 0) {
-			if (annotation.coordinate.latitude < minLat) {
-				minLat = annotation.coordinate.latitude;
-			}		
-			if (annotation.coordinate.longitude < minLon) {
-				minLon = annotation.coordinate.longitude;
-			}		
-			if (annotation.coordinate.latitude > maxLat) {
-				maxLat = annotation.coordinate.latitude;
-			}		
-			if (annotation.coordinate.longitude > maxLon) {
-				maxLon = annotation.coordinate.longitude;
-			}
-		}
-	}
-	
-	
-	MKCoordinateSpan span = MKCoordinateSpanMake(maxLat - minLat, maxLon - minLon);
-	CLLocationCoordinate2D center = CLLocationCoordinate2DMake(maxLat - span.latitudeDelta / 2, maxLon - span.longitudeDelta / 2);
-	
-	self.mapView.region = MKCoordinateRegionMake(center, span);
-	
-	[self.mapView addAnnotations:bringBanks];
+    
+	self.mapView.region = self.allBringBanksRegion;
+    
+	[self.mapView addAnnotations:bringBanks_];   
     
 }
 
-
-
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return YES;
-}
-
-
-- (void)didReceiveMemoryWarning {
-	// Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
+- (MKCoordinateRegion)allBringBanksRegion {
+    
+    if (allBringBanksRegion_.span.latitudeDelta == 0.0 && allBringBanksRegion_.span.longitudeDelta == 0.0) {
+        CLLocationDegrees minLat = 90.0;
+        CLLocationDegrees maxLat = -90.0;
+        CLLocationDegrees minLon = 180.0;
+        CLLocationDegrees maxLon = -180.0;
+        
+        for (id <MKAnnotation> bringBank in bringBanks_) {
+            if (bringBank.coordinate.latitude != 0 && bringBank.coordinate.longitude != 0) {
+                if (bringBank.coordinate.latitude < minLat) {
+                    minLat = bringBank.coordinate.latitude;
+                }		
+                if (bringBank.coordinate.longitude < minLon) {
+                    minLon = bringBank.coordinate.longitude;
+                }		
+                if (bringBank.coordinate.latitude > maxLat) {
+                    maxLat = bringBank.coordinate.latitude;
+                }		
+                if (bringBank.coordinate.longitude > maxLon) {
+                    maxLon = bringBank.coordinate.longitude;
+                }
+            }
+        }
+        
+        
+        MKCoordinateSpan span = MKCoordinateSpanMake(maxLat - minLat, maxLon - minLon);
+        CLLocationCoordinate2D center = CLLocationCoordinate2DMake(maxLat - span.latitudeDelta / 2, maxLon - span.longitudeDelta / 2);
+        
+        allBringBanksRegion_ = MKCoordinateRegionMake(center, span);
+    }
 	
-	// Release any cached data, images, etc that aren't in use.
+	return allBringBanksRegion_;
 }
 
-- (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
+- (void)selectBringBank:(BringBank *)bringBank {    
+    [self.mapView selectAnnotation:bringBank animated:YES];
 }
 
-
-- (void)dealloc {
-    [super dealloc];
-}
+#pragma mark - Map view delgate
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
+    
+    if ([annotation isKindOfClass:[MKUserLocation class]]) {
+        // enable "Nearest" button
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+        return nil;
+    }
 	
     // Handle any custom annotations.
     if ([annotation isKindOfClass:[BringBank class]]) {
-        MKPinAnnotationView *pinView = (MKPinAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomPinAnnotationView"];
+        MKPinAnnotationView *pinView = (MKPinAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:@"PinAnnotationView"];
 		
         if (!pinView) {
-			pinView = [[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"CustomPinAnnotation"] autorelease];
-			pinView.animatesDrop = YES;
+			pinView = [[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"PinAnnotationView"] autorelease];
 			pinView.canShowCallout = YES;
-			
-			ThreeOptionView *optionView = [[ThreeOptionView alloc] initWithFrame:CGRectMake(0.0, 0.0, 40.0, 33.0)];
-			optionView.onImageView1.image = [UIImage imageNamed:@"GlassOn.png"];
-			optionView.onImageView2.image = [UIImage imageNamed:@"CansOn.png"];			
-			optionView.onImageView3.image = [UIImage imageNamed:@"TextilesOn.png"];
-			
-			optionView.offImageView1.image = [UIImage imageNamed:@"GlassOff.png"];
-			optionView.offImageView2.image = [UIImage imageNamed:@"CansOff.png"];			
-			optionView.offImageView3.image = [UIImage imageNamed:@"TextilesOff.png"];
-			
-			pinView.leftCalloutAccessoryView = optionView;
-			[optionView release];
-			
 		} else {
 			pinView.annotation = annotation;
 		}
-		
-		BringBank *bringBank = (BringBank *)annotation;	
-		
-		ThreeOptionView *optionView = (ThreeOptionView *)pinView.leftCalloutAccessoryView;
-		
-		optionView.options = bringBank.materialTypes;
-		
+				
         return pinView;
     }
 	
     return nil;
+}
+
+#pragma mark - IBActions
+
+- (IBAction)showNearest:(id)sender {
+    if (self.mapView.userLocation.location) {
+        CLLocationDistance closestDistnace = MAXFLOAT;
+        BringBank *closestBringBank = nil;
+        
+        for (id <MKAnnotation> bringBank in bringBanks_) {
+            CLLocation *location = [[CLLocation alloc] initWithLatitude:bringBank.coordinate.latitude 
+                                                              longitude:bringBank.coordinate.longitude];
+            CLLocationDistance distance = [location distanceFromLocation:self.mapView.userLocation.location];
+            if (distance < closestDistnace) {
+                closestDistnace = distance;
+                closestBringBank = bringBank;
+            }
+        }
+        
+        [self.mapView setRegion:MKCoordinateRegionMake(closestBringBank.coordinate, 
+                                                       MKCoordinateSpanMake(0.01, 0.01)) 
+                       animated:YES];
+        [self performSelector:@selector(selectBringBank:) withObject:closestBringBank afterDelay:0.5];
+    }
+   
+}
+
+- (IBAction)showAll:(id)sender {    
+	[self.mapView setRegion:self.allBringBanksRegion animated:YES];
 }
 
 @end

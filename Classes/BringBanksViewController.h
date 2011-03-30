@@ -8,13 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "BringBank.h"
 
 @interface BringBanksViewController : UIViewController <MKMapViewDelegate> {
-    NSArray *bringBanks;
-    MKMapView *mapView;
+@private
+    NSArray *bringBanks_;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
+@property (nonatomic, readonly) MKCoordinateRegion allBringBanksRegion;
+
+- (void)loadBringBanks;
+- (void)selectBringBank:(BringBank *)bringBank;
+
+- (IBAction)showNearest:(id)sender;
+- (IBAction)showAll:(id)sender;
 
 @end
 

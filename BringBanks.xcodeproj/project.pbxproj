@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,20 +20,6 @@
 		E26FFA7712A5B25E003FA228 /* Bring_Banks.kml in Resources */ = {isa = PBXBuildFile; fileRef = E26FFA7612A5B25E003FA228 /* Bring_Banks.kml */; };
 		E26FFA7A12A5B287003FA228 /* BringBank.m in Sources */ = {isa = PBXBuildFile; fileRef = E26FFA7912A5B287003FA228 /* BringBank.m */; };
 		E2B21B7512A67AF9000258D5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2B21B7412A67AF9000258D5 /* CoreLocation.framework */; };
-		E2B21C1E12A69952000258D5 /* Cans.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B21C1712A69952000258D5 /* Cans.png */; };
-		E2B21C1F12A69952000258D5 /* CansTextiles.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B21C1812A69952000258D5 /* CansTextiles.png */; };
-		E2B21C2012A69952000258D5 /* Glass.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B21C1912A69952000258D5 /* Glass.png */; };
-		E2B21C2112A69952000258D5 /* GlassCans.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B21C1A12A69952000258D5 /* GlassCans.png */; };
-		E2B21C2212A69952000258D5 /* GlassCansTextiles.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B21C1B12A69952000258D5 /* GlassCansTextiles.png */; };
-		E2B21C2312A69952000258D5 /* GlassTextiles.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B21C1C12A69952000258D5 /* GlassTextiles.png */; };
-		E2B21C2412A69952000258D5 /* Textiles.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B21C1D12A69952000258D5 /* Textiles.png */; };
-		E2B21C4212A6A75C000258D5 /* ThreeOptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B21C4112A6A75C000258D5 /* ThreeOptionView.m */; };
-		E2B21C4D12A6B245000258D5 /* CansOff.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B21C4712A6B245000258D5 /* CansOff.png */; };
-		E2B21C4E12A6B245000258D5 /* CansOn.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B21C4812A6B245000258D5 /* CansOn.png */; };
-		E2B21C4F12A6B245000258D5 /* GlassOff.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B21C4912A6B245000258D5 /* GlassOff.png */; };
-		E2B21C5012A6B245000258D5 /* GlassOn.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B21C4A12A6B245000258D5 /* GlassOn.png */; };
-		E2B21C5112A6B245000258D5 /* TextilesOff.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B21C4B12A6B245000258D5 /* TextilesOff.png */; };
-		E2B21C5212A6B245000258D5 /* TextilesOn.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B21C4C12A6B245000258D5 /* TextilesOn.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,21 +42,6 @@
 		E26FFA7812A5B287003FA228 /* BringBank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BringBank.h; sourceTree = "<group>"; };
 		E26FFA7912A5B287003FA228 /* BringBank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BringBank.m; sourceTree = "<group>"; };
 		E2B21B7412A67AF9000258D5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		E2B21C1712A69952000258D5 /* Cans.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cans.png; sourceTree = "<group>"; };
-		E2B21C1812A69952000258D5 /* CansTextiles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CansTextiles.png; sourceTree = "<group>"; };
-		E2B21C1912A69952000258D5 /* Glass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Glass.png; sourceTree = "<group>"; };
-		E2B21C1A12A69952000258D5 /* GlassCans.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GlassCans.png; sourceTree = "<group>"; };
-		E2B21C1B12A69952000258D5 /* GlassCansTextiles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GlassCansTextiles.png; sourceTree = "<group>"; };
-		E2B21C1C12A69952000258D5 /* GlassTextiles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GlassTextiles.png; sourceTree = "<group>"; };
-		E2B21C1D12A69952000258D5 /* Textiles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Textiles.png; sourceTree = "<group>"; };
-		E2B21C4012A6A75C000258D5 /* ThreeOptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreeOptionView.h; sourceTree = "<group>"; };
-		E2B21C4112A6A75C000258D5 /* ThreeOptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreeOptionView.m; sourceTree = "<group>"; };
-		E2B21C4712A6B245000258D5 /* CansOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CansOff.png; sourceTree = "<group>"; };
-		E2B21C4812A6B245000258D5 /* CansOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CansOn.png; sourceTree = "<group>"; };
-		E2B21C4912A6B245000258D5 /* GlassOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GlassOff.png; sourceTree = "<group>"; };
-		E2B21C4A12A6B245000258D5 /* GlassOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GlassOn.png; sourceTree = "<group>"; };
-		E2B21C4B12A6B245000258D5 /* TextilesOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TextilesOff.png; sourceTree = "<group>"; };
-		E2B21C4C12A6B245000258D5 /* TextilesOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TextilesOn.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +70,6 @@
 				28D7ACF70DDB3853001CB0EB /* BringBanksViewController.m */,
 				E26FFA7812A5B287003FA228 /* BringBank.h */,
 				E26FFA7912A5B287003FA228 /* BringBank.m */,
-				E2B21C4012A6A75C000258D5 /* ThreeOptionView.h */,
-				E2B21C4112A6A75C000258D5 /* ThreeOptionView.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -137,19 +106,6 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				E2B21C4712A6B245000258D5 /* CansOff.png */,
-				E2B21C4812A6B245000258D5 /* CansOn.png */,
-				E2B21C4912A6B245000258D5 /* GlassOff.png */,
-				E2B21C4A12A6B245000258D5 /* GlassOn.png */,
-				E2B21C4B12A6B245000258D5 /* TextilesOff.png */,
-				E2B21C4C12A6B245000258D5 /* TextilesOn.png */,
-				E2B21C1712A69952000258D5 /* Cans.png */,
-				E2B21C1812A69952000258D5 /* CansTextiles.png */,
-				E2B21C1912A69952000258D5 /* Glass.png */,
-				E2B21C1A12A69952000258D5 /* GlassCans.png */,
-				E2B21C1B12A69952000258D5 /* GlassCansTextiles.png */,
-				E2B21C1C12A69952000258D5 /* GlassTextiles.png */,
-				E2B21C1D12A69952000258D5 /* Textiles.png */,
 				E26FFA7612A5B25E003FA228 /* Bring_Banks.kml */,
 				2899E5210DE3E06400AC0155 /* BringBanksViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
@@ -197,7 +153,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "BringBanks" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -223,19 +179,6 @@
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				2899E5220DE3E06400AC0155 /* BringBanksViewController.xib in Resources */,
 				E26FFA7712A5B25E003FA228 /* Bring_Banks.kml in Resources */,
-				E2B21C1E12A69952000258D5 /* Cans.png in Resources */,
-				E2B21C1F12A69952000258D5 /* CansTextiles.png in Resources */,
-				E2B21C2012A69952000258D5 /* Glass.png in Resources */,
-				E2B21C2112A69952000258D5 /* GlassCans.png in Resources */,
-				E2B21C2212A69952000258D5 /* GlassCansTextiles.png in Resources */,
-				E2B21C2312A69952000258D5 /* GlassTextiles.png in Resources */,
-				E2B21C2412A69952000258D5 /* Textiles.png in Resources */,
-				E2B21C4D12A6B245000258D5 /* CansOff.png in Resources */,
-				E2B21C4E12A6B245000258D5 /* CansOn.png in Resources */,
-				E2B21C4F12A6B245000258D5 /* GlassOff.png in Resources */,
-				E2B21C5012A6B245000258D5 /* GlassOn.png in Resources */,
-				E2B21C5112A6B245000258D5 /* TextilesOff.png in Resources */,
-				E2B21C5212A6B245000258D5 /* TextilesOn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,7 +193,6 @@
 				1D3623260D0F684500981E51 /* BringBanksAppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* BringBanksViewController.m in Sources */,
 				E26FFA7A12A5B287003FA228 /* BringBank.m in Sources */,
-				E2B21C4212A6A75C000258D5 /* ThreeOptionView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +210,7 @@
 				GCC_PREFIX_HEADER = BringBanks_Prefix.pch;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "BringBanks-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = BringBanks;
 			};
 			name = Debug;
@@ -281,6 +224,7 @@
 				GCC_PREFIX_HEADER = BringBanks_Prefix.pch;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "BringBanks-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = BringBanks;
 				VALIDATE_PRODUCT = YES;
 			};
