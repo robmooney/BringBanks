@@ -304,7 +304,12 @@
    
 }
 
-- (IBAction)showAll:(id)sender {    
+- (IBAction)showAll:(id)sender {
+    
+    for (id <MKAnnotation> annotation in self.mapView.selectedAnnotations) {
+        [self.mapView deselectAnnotation:annotation animated:YES];
+    }
+    
 	[self.mapView setRegion:self.allBringBanksRegion animated:YES];
 }
 
