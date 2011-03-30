@@ -199,6 +199,8 @@
 	xmlTextReaderClose(reader);
     xmlFreeTextReader(reader);
     
+    [data release];
+    
     bringBanks_ = [tempBringBanks copy];
     
     [tempBringBanks release];
@@ -286,6 +288,8 @@
             CLLocation *location = [[CLLocation alloc] initWithLatitude:bringBank.coordinate.latitude 
                                                               longitude:bringBank.coordinate.longitude];
             CLLocationDistance distance = [location distanceFromLocation:self.mapView.userLocation.location];
+            [location release];
+            
             if (distance < closestDistnace) {
                 closestDistnace = distance;
                 closestBringBank = bringBank;
