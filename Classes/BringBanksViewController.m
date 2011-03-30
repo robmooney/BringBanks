@@ -33,6 +33,7 @@
                                                                       style:UIBarButtonItemStyleBordered 
                                                                      target:self 
                                                                      action:@selector(showNearest:)];
+    nearestButton.enabled = NO;
     self.navigationItem.rightBarButtonItem = nearestButton;
     
     [nearestButton release];

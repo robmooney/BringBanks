@@ -20,6 +20,8 @@
 		E26FFA7712A5B25E003FA228 /* Bring_Banks.kml in Resources */ = {isa = PBXBuildFile; fileRef = E26FFA7612A5B25E003FA228 /* Bring_Banks.kml */; };
 		E26FFA7A12A5B287003FA228 /* BringBank.m in Sources */ = {isa = PBXBuildFile; fileRef = E26FFA7912A5B287003FA228 /* BringBank.m */; };
 		E2B21B7512A67AF9000258D5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2B21B7412A67AF9000258D5 /* CoreLocation.framework */; };
+		E2E2D3EA1343889000777AB1 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E2D3E81343889000777AB1 /* Default.png */; };
+		E2E2D3EB1343889000777AB1 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E2D3E91343889000777AB1 /* Default@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		E26FFA7812A5B287003FA228 /* BringBank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BringBank.h; sourceTree = "<group>"; };
 		E26FFA7912A5B287003FA228 /* BringBank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BringBank.m; sourceTree = "<group>"; };
 		E2B21B7412A67AF9000258D5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		E2E2D3E81343889000777AB1 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		E2E2D3E91343889000777AB1 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E2E2D3E81343889000777AB1 /* Default.png */,
+				E2E2D3E91343889000777AB1 /* Default@2x.png */,
 				E26FFA7612A5B25E003FA228 /* Bring_Banks.kml */,
 				2899E5210DE3E06400AC0155 /* BringBanksViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
@@ -179,6 +185,8 @@
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				2899E5220DE3E06400AC0155 /* BringBanksViewController.xib in Resources */,
 				E26FFA7712A5B25E003FA228 /* Bring_Banks.kml in Resources */,
+				E2E2D3EA1343889000777AB1 /* Default.png in Resources */,
+				E2E2D3EB1343889000777AB1 /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
