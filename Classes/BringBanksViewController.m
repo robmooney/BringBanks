@@ -109,7 +109,13 @@
     NSData *data = [[NSData alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"Bring_Banks" 
                                                                                  withExtension:@"kml"]];
     
-    xmlTextReaderPtr reader = xmlReaderForMemory([data bytes], [data length], NULL, NULL, (XML_PARSE_NOBLANKS | XML_PARSE_NOCDATA | XML_PARSE_NOERROR | XML_PARSE_NOWARNING));
+    xmlTextReaderPtr reader = xmlReaderForMemory(
+                                                 [data bytes], 
+                                                 [data length], 
+                                                 NULL, 
+                                                 NULL, 
+                                                 (XML_PARSE_NOBLANKS | XML_PARSE_NOCDATA | XML_PARSE_NOERROR | XML_PARSE_NOWARNING)
+                                                 );
 	
 	if (reader) {
 		
@@ -305,6 +311,33 @@
     [self.mapView selectAnnotation:bringBank animated:YES];
 }
 
+- (void)showFilteredBringBanks {
+    
+    NSMutableArray *annotationsToRemove = [[NSMutableArray alloc] initWithCapacity:0];
+    
+    for (id <MKAnnotation> annotation in self.mapView.annotations) {
+        if ([annotation isKindOfClass:[BringBank class]]) {
+            if (![filteredBringBanks_ containsObject:annotation]) {
+                [annotationsToRemove addObject:annotation];
+            }
+        }
+    }
+    
+    NSMutableArray *annotationsToAdd = [[NSMutableArray alloc] initWithCapacity:0];
+    
+    for (BringBank *bringBank in filteredBringBanks_) {
+        if (![self.mapView.annotations containsObject:bringBank]) {
+            [annotationsToAdd addObject:bringBank];
+        }
+    }
+    
+    [self.mapView removeAnnotations:annotationsToRemove];
+    [self.mapView addAnnotations:annotationsToAdd];
+    
+    [annotationsToRemove release];
+    [annotationsToAdd release];
+}
+
 #pragma mark - Map view delgate
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
@@ -315,13 +348,13 @@
         return nil;
     }
 	
-    // Handle any custom annotations.
     if ([annotation isKindOfClass:[BringBank class]]) {
         MKPinAnnotationView *pinView = (MKPinAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:@"PinAnnotationView"];
 		
         if (!pinView) {
 			pinView = [[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"PinAnnotationView"] autorelease];
 			pinView.canShowCallout = YES;
+            pinView.animatesDrop = YES;
 		} else {
 			pinView.annotation = annotation;
 		}
@@ -368,9 +401,7 @@
 	[self.mapView setRegion:self.allBringBanksRegion animated:YES];
 }
 
-- (IBAction)filterChanged:(UISegmentedControl *)sender {
-    [self.mapView removeAnnotations:filteredBringBanks_];
-    
+- (IBAction)filterChanged:(UISegmentedControl *)sender {    
     switch (sender.selectedSegmentIndex) {
         case 0: {
             filteredBringBanks_ = allBringBanks_;
@@ -390,7 +421,7 @@
         }
     }
     
-    [self.mapView addAnnotations:filteredBringBanks_];
+    [self showFilteredBringBanks];
 }
 
 

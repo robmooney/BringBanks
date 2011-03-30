@@ -26,6 +26,7 @@
 
 - (void)loadBringBanks;
 - (void)selectBringBank:(BringBank *)bringBank;
+- (void)showFilteredBringBanks;
 
 - (IBAction)showNearest:(id)sender;
 - (IBAction)showAll:(id)sender;
