@@ -22,6 +22,10 @@
 		E2B21B7512A67AF9000258D5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2B21B7412A67AF9000258D5 /* CoreLocation.framework */; };
 		E2E2D3EA1343889000777AB1 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E2D3E81343889000777AB1 /* Default.png */; };
 		E2E2D3EB1343889000777AB1 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E2D3E91343889000777AB1 /* Default@2x.png */; };
+		E2E2D3F013438E2600777AB1 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E2D3EC13438E2600777AB1 /* Icon-Small.png */; };
+		E2E2D3F113438E2600777AB1 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E2D3ED13438E2600777AB1 /* Icon-Small@2x.png */; };
+		E2E2D3F213438E2600777AB1 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E2D3EE13438E2600777AB1 /* Icon.png */; };
+		E2E2D3F313438E2600777AB1 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E2D3EF13438E2600777AB1 /* Icon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +50,10 @@
 		E2B21B7412A67AF9000258D5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E2E2D3E81343889000777AB1 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		E2E2D3E91343889000777AB1 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		E2E2D3EC13438E2600777AB1 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		E2E2D3ED13438E2600777AB1 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		E2E2D3EE13438E2600777AB1 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		E2E2D3EF13438E2600777AB1 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +118,10 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E2E2D3EC13438E2600777AB1 /* Icon-Small.png */,
+				E2E2D3ED13438E2600777AB1 /* Icon-Small@2x.png */,
+				E2E2D3EE13438E2600777AB1 /* Icon.png */,
+				E2E2D3EF13438E2600777AB1 /* Icon@2x.png */,
 				E2E2D3E81343889000777AB1 /* Default.png */,
 				E2E2D3E91343889000777AB1 /* Default@2x.png */,
 				E26FFA7612A5B25E003FA228 /* Bring_Banks.kml */,
@@ -187,6 +199,10 @@
 				E26FFA7712A5B25E003FA228 /* Bring_Banks.kml in Resources */,
 				E2E2D3EA1343889000777AB1 /* Default.png in Resources */,
 				E2E2D3EB1343889000777AB1 /* Default@2x.png in Resources */,
+				E2E2D3F013438E2600777AB1 /* Icon-Small.png in Resources */,
+				E2E2D3F113438E2600777AB1 /* Icon-Small@2x.png in Resources */,
+				E2E2D3F213438E2600777AB1 /* Icon.png in Resources */,
+				E2E2D3F313438E2600777AB1 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -50,6 +50,7 @@
 }
 
 - (void)dealloc {
+    [ID release];
     [GISID release];
     [electoralArea release];
     [location release];

@@ -16,7 +16,7 @@ typedef enum {
 } BringBankMaterialType;
 
 @interface BringBank : NSObject <MKAnnotation> {
-    double ID;
+    NSString *ID;
     NSString *GISID;
     double weight;
     NSString *electoralArea;
@@ -27,7 +27,7 @@ typedef enum {
 	BringBankMaterialType materialTypes;
 }
 
-@property (nonatomic) double ID;
+@property (nonatomic, copy) NSString *ID;
 @property (nonatomic, copy) NSString *GISID;
 @property (nonatomic) double weight;
 @property (nonatomic, copy) NSString *electoralArea;

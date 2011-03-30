@@ -13,6 +13,7 @@
 @implementation BringBanksViewController
 
 @synthesize mapView = mapView_;
+@synthesize filterControl = filterControl_;
 @synthesize allBringBanksRegion = allBringBanksRegion_;
 
 #pragma mark - View lifecycle
@@ -38,7 +39,25 @@
     
     [nearestButton release];
     
-    if (bringBanks_ == nil) {
+    
+    UISegmentedControl *filterControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"All", @"Glass", @"Cans", @"Textiles", nil]];
+    
+    filterControl.segmentedControlStyle = UISegmentedControlStyleBar;
+    filterControl.selectedSegmentIndex = 0;
+    filterControl.tintColor = [UIColor colorWithRed:0.2f green:0.4f blue:0.2f alpha:1.0f];
+    
+    [filterControl addTarget:self action:@selector(filterChanged:) forControlEvents:UIControlEventValueChanged];
+    
+    self.filterControl = filterControl; 
+    
+    [filterControl release];
+    
+    UIBarButtonItem *filterBarButton = [[[UIBarButtonItem alloc] initWithCustomView:self.filterControl] autorelease];        
+    UIBarButtonItem *flexibleSpace = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease];
+    
+    self.toolbarItems = [NSArray arrayWithObjects:flexibleSpace, filterBarButton, flexibleSpace, nil];
+    
+    if (allBringBanks_ == nil) {
         [self loadBringBanks];
     }
     
@@ -49,7 +68,9 @@
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
-    return YES;
+    return interfaceOrientation == UIInterfaceOrientationPortrait || 
+        interfaceOrientation == UIInterfaceOrientationLandscapeLeft || 
+        interfaceOrientation == UIInterfaceOrientationLandscapeRight;
 }
 
 #pragma mark - Memory Management
@@ -67,7 +88,11 @@
 
 - (void)dealloc {
     [mapView_ release];
-    [bringBanks_ release];
+    [filterControl_ release];
+    [allBringBanks_ release];
+    [glassBringBanks_ release];
+    [cansBringBanks_ release];
+    [textilesBringBanks_ release];
     [super dealloc];
 }
 
@@ -136,9 +161,8 @@
 						
 						currentTagValue = xmlTextReaderConstValue(reader);
                         
-                        if (xmlStrEqual(currentNameAttr, BAD_CAST "ID_")) {    
-                            
-                            bringBank.ID = atof((const char *)currentTagValue);
+                        if (xmlStrEqual(currentNameAttr, BAD_CAST "ID_")) {                            
+                            bringBank.ID = [NSString stringWithUTF8String:(const char *)currentTagValue];
                         }
                         
                         if (xmlStrEqual(currentNameAttr, BAD_CAST "WEIGHT")) {                            
@@ -202,13 +226,43 @@
     
     [data release];
     
-    bringBanks_ = [tempBringBanks copy];
+    allBringBanks_ = [tempBringBanks copy];
     
     [tempBringBanks release];
     
+    NSMutableArray *tempGlassBringBanks = [[NSMutableArray alloc] initWithCapacity:0];
+    NSMutableArray *tempCansBringBanks = [[NSMutableArray alloc] initWithCapacity:0];
+    NSMutableArray *tempTextilesBringBanks = [[NSMutableArray alloc] initWithCapacity:0];
+    
+    for (BringBank *bringBank in allBringBanks_) {
+        
+        if (bringBank.materialTypes & BringBankMaterialTypeGlass) {
+            [tempGlassBringBanks addObject:bringBank];
+        }
+        
+        if (bringBank.materialTypes & BringBankMaterialTypeCans) {
+            [tempCansBringBanks addObject:bringBank];
+        }
+        
+        if (bringBank.materialTypes & BringBankMaterialTypeTextiles) {
+            [tempTextilesBringBanks addObject:bringBank];
+        }
+        
+    }
+    
+    glassBringBanks_ = [tempGlassBringBanks copy];
+    cansBringBanks_ = [tempCansBringBanks copy];
+    textilesBringBanks_ = [tempTextilesBringBanks copy];
+    
+    [tempGlassBringBanks release];
+    [tempCansBringBanks release];
+    [tempTextilesBringBanks release];
+    
 	self.mapView.region = self.allBringBanksRegion;
     
-	[self.mapView addAnnotations:bringBanks_];   
+    filteredBringBanks_ = allBringBanks_;
+    
+	[self.mapView addAnnotations:filteredBringBanks_];   
     
 }
 
@@ -220,7 +274,7 @@
         CLLocationDegrees minLon = 180.0;
         CLLocationDegrees maxLon = -180.0;
         
-        for (id <MKAnnotation> bringBank in bringBanks_) {
+        for (id <MKAnnotation> bringBank in allBringBanks_) {
             if (bringBank.coordinate.latitude != 0 && bringBank.coordinate.longitude != 0) {
                 if (bringBank.coordinate.latitude < minLat) {
                     minLat = bringBank.coordinate.latitude;
@@ -285,7 +339,7 @@
         CLLocationDistance closestDistnace = MAXFLOAT;
         BringBank *closestBringBank = nil;
         
-        for (id <MKAnnotation> bringBank in bringBanks_) {
+        for (id <MKAnnotation> bringBank in filteredBringBanks_) {
             CLLocation *location = [[CLLocation alloc] initWithLatitude:bringBank.coordinate.latitude 
                                                               longitude:bringBank.coordinate.longitude];
             CLLocationDistance distance = [location distanceFromLocation:self.mapView.userLocation.location];
@@ -313,5 +367,31 @@
     
 	[self.mapView setRegion:self.allBringBanksRegion animated:YES];
 }
+
+- (IBAction)filterChanged:(UISegmentedControl *)sender {
+    [self.mapView removeAnnotations:filteredBringBanks_];
+    
+    switch (sender.selectedSegmentIndex) {
+        case 0: {
+            filteredBringBanks_ = allBringBanks_;
+            break;
+        }
+        case 1: {
+            filteredBringBanks_ = glassBringBanks_;
+            break;
+        }
+        case 2: {
+            filteredBringBanks_ = cansBringBanks_;
+            break;
+        }
+        case 3: {
+            filteredBringBanks_ = textilesBringBanks_;
+            break;
+        }
+    }
+    
+    [self.mapView addAnnotations:filteredBringBanks_];
+}
+
 
 @end
