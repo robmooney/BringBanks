@@ -40,7 +40,7 @@
     [nearestButton release];
     
     
-    UISegmentedControl *filterControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"All", @"Glass", @"Cans", @"Textiles", nil]];
+    UISegmentedControl *filterControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Any", @"Glass", @"Cans", @"Textiles", nil]];
     
     filterControl.segmentedControlStyle = UISegmentedControlStyleBar;
     filterControl.selectedSegmentIndex = 0;
@@ -299,7 +299,11 @@
         
         
         MKCoordinateSpan span = MKCoordinateSpanMake(maxLat - minLat, maxLon - minLon);
-        CLLocationCoordinate2D center = CLLocationCoordinate2DMake(maxLat - span.latitudeDelta / 2, maxLon - span.longitudeDelta / 2);
+        
+        CLLocationCoordinate2D center = CLLocationCoordinate2DMake((maxLat - span.latitudeDelta / 2), maxLon - span.longitudeDelta / 2);
+        
+        // add a slight offset to make room for the map view pins
+        center.latitude += 0.01;
         
         allBringBanksRegion_ = MKCoordinateRegionMake(center, span);
     }

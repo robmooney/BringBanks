@@ -17,7 +17,6 @@
 		28D7ACF80DDB3853001CB0EB /* BringBanksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* BringBanksViewController.m */; };
 		E26FFA7312A5B0F2003FA228 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E26FFA7212A5B0F1003FA228 /* MapKit.framework */; };
 		E26FFA7512A5B229003FA228 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E26FFA7412A5B229003FA228 /* libxml2.2.dylib */; };
-		E26FFA7712A5B25E003FA228 /* Bring_Banks.kml in Resources */ = {isa = PBXBuildFile; fileRef = E26FFA7612A5B25E003FA228 /* Bring_Banks.kml */; };
 		E26FFA7A12A5B287003FA228 /* BringBank.m in Sources */ = {isa = PBXBuildFile; fileRef = E26FFA7912A5B287003FA228 /* BringBank.m */; };
 		E2B21B7512A67AF9000258D5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2B21B7412A67AF9000258D5 /* CoreLocation.framework */; };
 		E2E2D3EA1343889000777AB1 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E2D3E81343889000777AB1 /* Default.png */; };
@@ -26,6 +25,7 @@
 		E2E2D3F113438E2600777AB1 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E2D3ED13438E2600777AB1 /* Icon-Small@2x.png */; };
 		E2E2D3F213438E2600777AB1 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E2D3EE13438E2600777AB1 /* Icon.png */; };
 		E2E2D3F313438E2600777AB1 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E2D3EF13438E2600777AB1 /* Icon@2x.png */; };
+		E2E742BE1344B15700DFBB2A /* Bring_Banks.kml in Resources */ = {isa = PBXBuildFile; fileRef = E2E742BD1344B15700DFBB2A /* Bring_Banks.kml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,7 +44,6 @@
 		8D1107310486CEB800E47090 /* BringBanks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "BringBanks-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		E26FFA7212A5B0F1003FA228 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E26FFA7412A5B229003FA228 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
-		E26FFA7612A5B25E003FA228 /* Bring_Banks.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = Bring_Banks.kml; path = /Users/robertm/Downloads/Bring_Banks.kml; sourceTree = "<absolute>"; };
 		E26FFA7812A5B287003FA228 /* BringBank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BringBank.h; sourceTree = "<group>"; };
 		E26FFA7912A5B287003FA228 /* BringBank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BringBank.m; sourceTree = "<group>"; };
 		E2B21B7412A67AF9000258D5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -54,6 +53,7 @@
 		E2E2D3ED13438E2600777AB1 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		E2E2D3EE13438E2600777AB1 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		E2E2D3EF13438E2600777AB1 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		E2E742BD1344B15700DFBB2A /* Bring_Banks.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Bring_Banks.kml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,13 +118,13 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E2E742BD1344B15700DFBB2A /* Bring_Banks.kml */,
 				E2E2D3EC13438E2600777AB1 /* Icon-Small.png */,
 				E2E2D3ED13438E2600777AB1 /* Icon-Small@2x.png */,
 				E2E2D3EE13438E2600777AB1 /* Icon.png */,
 				E2E2D3EF13438E2600777AB1 /* Icon@2x.png */,
 				E2E2D3E81343889000777AB1 /* Default.png */,
 				E2E2D3E91343889000777AB1 /* Default@2x.png */,
-				E26FFA7612A5B25E003FA228 /* Bring_Banks.kml */,
 				2899E5210DE3E06400AC0155 /* BringBanksViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* BringBanks-Info.plist */,
@@ -196,13 +196,13 @@
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				2899E5220DE3E06400AC0155 /* BringBanksViewController.xib in Resources */,
-				E26FFA7712A5B25E003FA228 /* Bring_Banks.kml in Resources */,
 				E2E2D3EA1343889000777AB1 /* Default.png in Resources */,
 				E2E2D3EB1343889000777AB1 /* Default@2x.png in Resources */,
 				E2E2D3F013438E2600777AB1 /* Icon-Small.png in Resources */,
 				E2E2D3F113438E2600777AB1 /* Icon-Small@2x.png in Resources */,
 				E2E2D3F213438E2600777AB1 /* Icon.png in Resources */,
 				E2E2D3F313438E2600777AB1 /* Icon@2x.png in Resources */,
+				E2E742BE1344B15700DFBB2A /* Bring_Banks.kml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,11 +258,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Robert Mooney (YQ382VSSUV)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D242805B-3264-46B0-AE67-0B9D689C4FA8";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -271,12 +272,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Robert Mooney";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EAB3D221-EF0E-4C57-9523-072BF6C5888D";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
