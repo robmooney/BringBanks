@@ -25,6 +25,24 @@
 		E2E2D3F113438E2600777AB1 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E2D3ED13438E2600777AB1 /* Icon-Small@2x.png */; };
 		E2E2D3F213438E2600777AB1 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E2D3EE13438E2600777AB1 /* Icon.png */; };
 		E2E2D3F313438E2600777AB1 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E2D3EF13438E2600777AB1 /* Icon@2x.png */; };
+		E2E3D0161346232100EFB0B7 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E3D0061346232100EFB0B7 /* Background.png */; };
+		E2E3D0171346232100EFB0B7 /* Background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E3D0071346232100EFB0B7 /* Background@2x.png */; };
+		E2E3D0181346232100EFB0B7 /* Cans.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E3D0081346232100EFB0B7 /* Cans.png */; };
+		E2E3D0191346232100EFB0B7 /* Cans@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E3D0091346232100EFB0B7 /* Cans@2x.png */; };
+		E2E3D01A1346232100EFB0B7 /* CansOff.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E3D00A1346232100EFB0B7 /* CansOff.png */; };
+		E2E3D01B1346232100EFB0B7 /* CansOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E3D00B1346232100EFB0B7 /* CansOff@2x.png */; };
+		E2E3D01C1346232100EFB0B7 /* Glass.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E3D00C1346232100EFB0B7 /* Glass.png */; };
+		E2E3D01D1346232100EFB0B7 /* Glass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E3D00D1346232100EFB0B7 /* Glass@2x.png */; };
+		E2E3D01E1346232100EFB0B7 /* GlassOff.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E3D00E1346232100EFB0B7 /* GlassOff.png */; };
+		E2E3D01F1346232100EFB0B7 /* GlassOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E3D00F1346232100EFB0B7 /* GlassOff@2x.png */; };
+		E2E3D0201346232100EFB0B7 /* RoundRect.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E3D0101346232100EFB0B7 /* RoundRect.png */; };
+		E2E3D0211346232100EFB0B7 /* RoundRect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E3D0111346232100EFB0B7 /* RoundRect@2x.png */; };
+		E2E3D0221346232100EFB0B7 /* Textiles.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E3D0121346232100EFB0B7 /* Textiles.png */; };
+		E2E3D0231346232100EFB0B7 /* Textiles@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E3D0131346232100EFB0B7 /* Textiles@2x.png */; };
+		E2E3D0241346232100EFB0B7 /* TextilesOff.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E3D0141346232100EFB0B7 /* TextilesOff.png */; };
+		E2E3D0251346232100EFB0B7 /* TextilesOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E3D0151346232100EFB0B7 /* TextilesOff@2x.png */; };
+		E2E3D02A1346233E00EFB0B7 /* BringBankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E3D0281346233E00EFB0B7 /* BringBankViewController.m */; };
+		E2E3D02B1346233E00EFB0B7 /* BringBankViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E3D0291346233E00EFB0B7 /* BringBankViewController.xib */; };
 		E2E742BE1344B15700DFBB2A /* Bring_Banks.kml in Resources */ = {isa = PBXBuildFile; fileRef = E2E742BD1344B15700DFBB2A /* Bring_Banks.kml */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +71,25 @@
 		E2E2D3ED13438E2600777AB1 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		E2E2D3EE13438E2600777AB1 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		E2E2D3EF13438E2600777AB1 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		E2E3D0061346232100EFB0B7 /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background.png; sourceTree = "<group>"; };
+		E2E3D0071346232100EFB0B7 /* Background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Background@2x.png"; sourceTree = "<group>"; };
+		E2E3D0081346232100EFB0B7 /* Cans.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cans.png; sourceTree = "<group>"; };
+		E2E3D0091346232100EFB0B7 /* Cans@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cans@2x.png"; sourceTree = "<group>"; };
+		E2E3D00A1346232100EFB0B7 /* CansOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CansOff.png; sourceTree = "<group>"; };
+		E2E3D00B1346232100EFB0B7 /* CansOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CansOff@2x.png"; sourceTree = "<group>"; };
+		E2E3D00C1346232100EFB0B7 /* Glass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Glass.png; sourceTree = "<group>"; };
+		E2E3D00D1346232100EFB0B7 /* Glass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Glass@2x.png"; sourceTree = "<group>"; };
+		E2E3D00E1346232100EFB0B7 /* GlassOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GlassOff.png; sourceTree = "<group>"; };
+		E2E3D00F1346232100EFB0B7 /* GlassOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GlassOff@2x.png"; sourceTree = "<group>"; };
+		E2E3D0101346232100EFB0B7 /* RoundRect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RoundRect.png; sourceTree = "<group>"; };
+		E2E3D0111346232100EFB0B7 /* RoundRect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RoundRect@2x.png"; sourceTree = "<group>"; };
+		E2E3D0121346232100EFB0B7 /* Textiles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Textiles.png; sourceTree = "<group>"; };
+		E2E3D0131346232100EFB0B7 /* Textiles@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Textiles@2x.png"; sourceTree = "<group>"; };
+		E2E3D0141346232100EFB0B7 /* TextilesOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TextilesOff.png; sourceTree = "<group>"; };
+		E2E3D0151346232100EFB0B7 /* TextilesOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TextilesOff@2x.png"; sourceTree = "<group>"; };
+		E2E3D0271346233E00EFB0B7 /* BringBankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BringBankViewController.h; sourceTree = "<group>"; };
+		E2E3D0281346233E00EFB0B7 /* BringBankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BringBankViewController.m; sourceTree = "<group>"; };
+		E2E3D0291346233E00EFB0B7 /* BringBankViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BringBankViewController.xib; sourceTree = "<group>"; };
 		E2E742BD1344B15700DFBB2A /* Bring_Banks.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Bring_Banks.kml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,6 +113,9 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				E2E3D0271346233E00EFB0B7 /* BringBankViewController.h */,
+				E2E3D0281346233E00EFB0B7 /* BringBankViewController.m */,
+				E2E3D0291346233E00EFB0B7 /* BringBankViewController.xib */,
 				1D3623240D0F684500981E51 /* BringBanksAppDelegate.h */,
 				1D3623250D0F684500981E51 /* BringBanksAppDelegate.m */,
 				28D7ACF60DDB3853001CB0EB /* BringBanksViewController.h */,
@@ -118,6 +158,22 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E2E3D0061346232100EFB0B7 /* Background.png */,
+				E2E3D0071346232100EFB0B7 /* Background@2x.png */,
+				E2E3D0081346232100EFB0B7 /* Cans.png */,
+				E2E3D0091346232100EFB0B7 /* Cans@2x.png */,
+				E2E3D00A1346232100EFB0B7 /* CansOff.png */,
+				E2E3D00B1346232100EFB0B7 /* CansOff@2x.png */,
+				E2E3D00C1346232100EFB0B7 /* Glass.png */,
+				E2E3D00D1346232100EFB0B7 /* Glass@2x.png */,
+				E2E3D00E1346232100EFB0B7 /* GlassOff.png */,
+				E2E3D00F1346232100EFB0B7 /* GlassOff@2x.png */,
+				E2E3D0101346232100EFB0B7 /* RoundRect.png */,
+				E2E3D0111346232100EFB0B7 /* RoundRect@2x.png */,
+				E2E3D0121346232100EFB0B7 /* Textiles.png */,
+				E2E3D0131346232100EFB0B7 /* Textiles@2x.png */,
+				E2E3D0141346232100EFB0B7 /* TextilesOff.png */,
+				E2E3D0151346232100EFB0B7 /* TextilesOff@2x.png */,
 				E2E742BD1344B15700DFBB2A /* Bring_Banks.kml */,
 				E2E2D3EC13438E2600777AB1 /* Icon-Small.png */,
 				E2E2D3ED13438E2600777AB1 /* Icon-Small@2x.png */,
@@ -203,6 +259,23 @@
 				E2E2D3F213438E2600777AB1 /* Icon.png in Resources */,
 				E2E2D3F313438E2600777AB1 /* Icon@2x.png in Resources */,
 				E2E742BE1344B15700DFBB2A /* Bring_Banks.kml in Resources */,
+				E2E3D0161346232100EFB0B7 /* Background.png in Resources */,
+				E2E3D0171346232100EFB0B7 /* Background@2x.png in Resources */,
+				E2E3D0181346232100EFB0B7 /* Cans.png in Resources */,
+				E2E3D0191346232100EFB0B7 /* Cans@2x.png in Resources */,
+				E2E3D01A1346232100EFB0B7 /* CansOff.png in Resources */,
+				E2E3D01B1346232100EFB0B7 /* CansOff@2x.png in Resources */,
+				E2E3D01C1346232100EFB0B7 /* Glass.png in Resources */,
+				E2E3D01D1346232100EFB0B7 /* Glass@2x.png in Resources */,
+				E2E3D01E1346232100EFB0B7 /* GlassOff.png in Resources */,
+				E2E3D01F1346232100EFB0B7 /* GlassOff@2x.png in Resources */,
+				E2E3D0201346232100EFB0B7 /* RoundRect.png in Resources */,
+				E2E3D0211346232100EFB0B7 /* RoundRect@2x.png in Resources */,
+				E2E3D0221346232100EFB0B7 /* Textiles.png in Resources */,
+				E2E3D0231346232100EFB0B7 /* Textiles@2x.png in Resources */,
+				E2E3D0241346232100EFB0B7 /* TextilesOff.png in Resources */,
+				E2E3D0251346232100EFB0B7 /* TextilesOff@2x.png in Resources */,
+				E2E3D02B1346233E00EFB0B7 /* BringBankViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +290,7 @@
 				1D3623260D0F684500981E51 /* BringBanksAppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* BringBanksViewController.m in Sources */,
 				E26FFA7A12A5B287003FA228 /* BringBank.m in Sources */,
+				E2E3D02A1346233E00EFB0B7 /* BringBankViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

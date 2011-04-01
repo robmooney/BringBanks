@@ -28,7 +28,7 @@
 }
 
 - (NSString *)title {
-    return self.location;
+    return self.area;
 }
 
 - (NSString *)subtitle {

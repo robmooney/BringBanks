@@ -7,6 +7,7 @@
 //
 
 #import "BringBanksViewController.h"
+#import "BringBankViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import <libxml/xmlreader.h>
 
@@ -20,6 +21,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UIBarButtonItem *backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Map" style:UIBarButtonItemStyleBordered target:nil action:nil];        
+    self.navigationItem.backBarButtonItem = backBarButtonItem;        
+    [backBarButtonItem release];
     
     UIBarButtonItem *allButton = [[UIBarButtonItem alloc] initWithTitle:@"All" 
                                                                   style:UIBarButtonItemStyleBordered 
@@ -87,6 +92,7 @@
 }
 
 - (void)dealloc {
+    mapView_.delegate = nil;
     [mapView_ release];
     [filterControl_ release];
     [allBringBanks_ release];
@@ -359,6 +365,7 @@
 			pinView = [[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"PinAnnotationView"] autorelease];
 			pinView.canShowCallout = YES;
             pinView.animatesDrop = YES;
+            pinView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
 		} else {
 			pinView.annotation = annotation;
 		}
@@ -369,11 +376,19 @@
     return nil;
 }
 
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+    BringBankViewController *detailViewController = [[BringBankViewController alloc] initWithNibName:nil bundle:nil];
+    detailViewController.bringBank = (BringBank *)view.annotation;
+    detailViewController.userLocation = self.mapView.userLocation.location;
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    [detailViewController release];
+}
+
 #pragma mark - IBActions
 
 - (IBAction)showNearest:(id)sender {
     if (self.mapView.userLocation.location) {
-        CLLocationDistance closestDistnace = MAXFLOAT;
+        CLLocationDistance closestDistance = MAXFLOAT;
         BringBank *closestBringBank = nil;
         
         for (id <MKAnnotation> bringBank in filteredBringBanks_) {
@@ -382,8 +397,8 @@
             CLLocationDistance distance = [location distanceFromLocation:self.mapView.userLocation.location];
             [location release];
             
-            if (distance < closestDistnace) {
-                closestDistnace = distance;
+            if (distance < closestDistance) {
+                closestDistance = distance;
                 closestBringBank = bringBank;
             }
         }
