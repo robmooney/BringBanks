@@ -7,13 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BringBanksLoader.h"
 
 @class BringBanksViewController;
 
-@interface BringBanksAppDelegate : NSObject <UIApplicationDelegate> {
+@interface BringBanksAppDelegate : NSObject <UIApplicationDelegate, BringBanksLoaderDelegate> {
+@private    
+    BringBanksLoader *bringBanksLoader_;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
+@property (nonatomic, retain) IBOutlet BringBanksViewController *bringBanksViewController;
 
 @end
 

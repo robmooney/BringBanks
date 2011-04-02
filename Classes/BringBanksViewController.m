@@ -13,6 +13,8 @@
 
 @implementation BringBanksViewController
 
+@synthesize bringBanks = bringBanks_;
+
 @synthesize mapView = mapView_;
 @synthesize filterControl = filterControl_;
 @synthesize allBringBanksRegion = allBringBanksRegion_;
@@ -60,12 +62,7 @@
     UIBarButtonItem *filterBarButton = [[[UIBarButtonItem alloc] initWithCustomView:self.filterControl] autorelease];        
     UIBarButtonItem *flexibleSpace = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease];
     
-    self.toolbarItems = [NSArray arrayWithObjects:flexibleSpace, filterBarButton, flexibleSpace, nil];
-    
-    if (allBringBanks_ == nil) {
-        [self loadBringBanks];
-    }
-    
+    self.toolbarItems = [NSArray arrayWithObjects:flexibleSpace, filterBarButton, flexibleSpace, nil];    
 }
 
 #pragma mark - Rotation support
@@ -95,7 +92,7 @@
     mapView_.delegate = nil;
     [mapView_ release];
     [filterControl_ release];
-    [allBringBanks_ release];
+    [bringBanks_ release];
     [glassBringBanks_ release];
     [cansBringBanks_ release];
     [textilesBringBanks_ release];
@@ -104,149 +101,15 @@
 
 #pragma mark - Bring banks
 
-- (void)loadBringBanks {
-    
-    NSMutableArray *tempBringBanks = [[NSMutableArray alloc] initWithCapacity:0];
-    
-    BringBank *bringBank = nil;
-    
-    CLLocationCoordinate2D coord;
-    
-    NSData *data = [[NSData alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"Bring_Banks" 
-                                                                                 withExtension:@"kml"]];
-    
-    xmlTextReaderPtr reader = xmlReaderForMemory(
-                                                 [data bytes], 
-                                                 [data length], 
-                                                 NULL, 
-                                                 NULL, 
-                                                 (XML_PARSE_NOBLANKS | XML_PARSE_NOCDATA | XML_PARSE_NOERROR | XML_PARSE_NOWARNING)
-                                                 );
-	
-	if (reader) {
-		
-		xmlChar const *currentTagName = NULL;
-		xmlChar const *currentTagValue = NULL;
-		xmlChar *currentNameAttr = NULL;
-		
-		while (YES) {
-			if (!xmlTextReaderRead(reader)) {
-				break;
-			}
-			
-			switch (xmlTextReaderNodeType(reader)) {
-					
-				case XML_READER_TYPE_ELEMENT:		
-                    
-					currentTagName = xmlTextReaderConstName(reader);
-					
-					if (xmlStrEqual(currentTagName, BAD_CAST "Placemark")) {
-						bringBank = [[BringBank alloc] init];
-					}
-					
-					if (xmlStrEqual(currentTagName, BAD_CAST "SimpleData")) {
-						currentNameAttr = xmlTextReaderGetAttribute(reader, BAD_CAST "name");
-					}
-					continue;
-					
-				case XML_READER_TYPE_END_ELEMENT:		
-                    
-					currentTagName = xmlTextReaderConstName(reader);
-					
-					if (xmlStrEqual(currentTagName, BAD_CAST "Placemark")) {
-                        bringBank.coordinate = coord;
-                        [tempBringBanks addObject:bringBank];
-                        [bringBank release];
-                        bringBank = nil;
-                    }
-					
-					if (currentNameAttr != NULL) {						
-						xmlFree(currentNameAttr);
-						currentNameAttr = NULL;
-					}
-					
-					continue;
-					
-				case XML_READER_TYPE_TEXT:
-					
-					if (xmlStrEqual(currentTagName, BAD_CAST "SimpleData")) {	
-						
-						currentTagValue = xmlTextReaderConstValue(reader);
-                        
-                        if (xmlStrEqual(currentNameAttr, BAD_CAST "ID_")) {                            
-                            bringBank.ID = [NSString stringWithUTF8String:(const char *)currentTagValue];
-                        }
-                        
-                        if (xmlStrEqual(currentNameAttr, BAD_CAST "WEIGHT")) {                            
-                            bringBank.weight = atof((const char *)currentTagValue);
-                        }
-                        
-                        if (xmlStrEqual(currentNameAttr, BAD_CAST "GIS_ID")) {                            
-                            bringBank.GISID = [NSString stringWithUTF8String:(const char *)currentTagValue];
-                        }
-                        
-                        if (xmlStrEqual(currentNameAttr, BAD_CAST "ELECTORAL_Area")) {                            
-                            bringBank.electoralArea = [NSString stringWithUTF8String:(const char *)currentTagValue];
-                        } 
-                        
-                        if (xmlStrEqual(currentNameAttr, BAD_CAST "LOCATION")) {                            
-                            bringBank.location = [NSString stringWithUTF8String:(const char *)currentTagValue];
-                        } 
-                        
-                        if (xmlStrEqual(currentNameAttr, BAD_CAST "AREA")) {                            
-                            bringBank.area = [NSString stringWithUTF8String:(const char *)currentTagValue];
-                        }
-                        
-                        if (xmlStrEqual(currentNameAttr, BAD_CAST "GLASS_OPER")) {                            
-                            bringBank.operatorName = [NSString stringWithUTF8String:(const char *)currentTagValue];
-                        }
-                        
-                        if (xmlStrEqual(currentNameAttr, BAD_CAST "GLASS")) {
-                            if (xmlStrEqual(currentTagValue, BAD_CAST "Y")) {
-								bringBank.materialTypes += BringBankMaterialTypeGlass;
-                            }
-                        }    
-                        
-                        if (xmlStrEqual(currentNameAttr, BAD_CAST "CANS")) {
-                            if (xmlStrEqual(currentTagValue, BAD_CAST "Y")) {
-								bringBank.materialTypes += BringBankMaterialTypeCans;
-                            }
-                        }   
-                        
-                        if (xmlStrEqual(currentNameAttr, BAD_CAST "TEXTILE")) {
-                            if (xmlStrEqual(currentTagValue, BAD_CAST "Y")) {
-								bringBank.materialTypes += BringBankMaterialTypeTextiles;
-                            }
-                        }
-                        
-                        if (xmlStrEqual(currentNameAttr, BAD_CAST "LAT")) {
-                            coord.latitude = atof((const char *)currentTagValue);
-                        }                        
-                        
-                        if (xmlStrEqual(currentNameAttr, BAD_CAST "LONG")) {
-                            coord.longitude = atof((const char *)currentTagValue);
-                        }
-                        
-					}
-					
-					continue;					
-			}
-		}
-	}		
-	xmlTextReaderClose(reader);
-    xmlFreeTextReader(reader);
-    
-    [data release];
-    
-    allBringBanks_ = [tempBringBanks copy];
-    
-    [tempBringBanks release];
+- (void)setBringBanks:(NSArray *)bringBanks {    
+    [bringBanks_ release];    
+    bringBanks_ = [bringBanks copy];    
     
     NSMutableArray *tempGlassBringBanks = [[NSMutableArray alloc] initWithCapacity:0];
     NSMutableArray *tempCansBringBanks = [[NSMutableArray alloc] initWithCapacity:0];
     NSMutableArray *tempTextilesBringBanks = [[NSMutableArray alloc] initWithCapacity:0];
     
-    for (BringBank *bringBank in allBringBanks_) {
+    for (BringBank *bringBank in bringBanks_) {
         
         if (bringBank.materialTypes & BringBankMaterialTypeGlass) {
             [tempGlassBringBanks addObject:bringBank];
@@ -262,6 +125,10 @@
         
     }
     
+    [glassBringBanks_ release];
+    [cansBringBanks_ release];
+    [textilesBringBanks_ release];
+    
     glassBringBanks_ = [tempGlassBringBanks copy];
     cansBringBanks_ = [tempCansBringBanks copy];
     textilesBringBanks_ = [tempTextilesBringBanks copy];
@@ -272,10 +139,9 @@
     
 	self.mapView.region = self.allBringBanksRegion;
     
-    filteredBringBanks_ = allBringBanks_;
+    filteredBringBanks_ = bringBanks_;
     
-	[self.mapView addAnnotations:filteredBringBanks_];   
-    
+	[self.mapView addAnnotations:filteredBringBanks_];     
 }
 
 - (MKCoordinateRegion)allBringBanksRegion {
@@ -286,7 +152,7 @@
         CLLocationDegrees minLon = 180.0;
         CLLocationDegrees maxLon = -180.0;
         
-        for (id <MKAnnotation> bringBank in allBringBanks_) {
+        for (id <MKAnnotation> bringBank in bringBanks_) {
             if (bringBank.coordinate.latitude != 0 && bringBank.coordinate.longitude != 0) {
                 if (bringBank.coordinate.latitude < minLat) {
                     minLat = bringBank.coordinate.latitude;
@@ -423,7 +289,7 @@
 - (IBAction)filterChanged:(UISegmentedControl *)sender {    
     switch (sender.selectedSegmentIndex) {
         case 0: {
-            filteredBringBanks_ = allBringBanks_;
+            filteredBringBanks_ = bringBanks_;
             break;
         }
         case 1: {

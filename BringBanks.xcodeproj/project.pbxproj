@@ -43,6 +43,8 @@
 		E2E3D0251346232100EFB0B7 /* TextilesOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E3D0151346232100EFB0B7 /* TextilesOff@2x.png */; };
 		E2E3D02A1346233E00EFB0B7 /* BringBankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E3D0281346233E00EFB0B7 /* BringBankViewController.m */; };
 		E2E3D02B1346233E00EFB0B7 /* BringBankViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E3D0291346233E00EFB0B7 /* BringBankViewController.xib */; };
+		E2E3D03D134786F000EFB0B7 /* BringBanksKMLConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2E3D03C134786F000EFB0B7 /* BringBanksKMLConfig.plist */; };
+		E2E3D04113478A9A00EFB0B7 /* BringBanksLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E3D04013478A9A00EFB0B7 /* BringBanksLoader.m */; };
 		E2E742BE1344B15700DFBB2A /* Bring_Banks.kml in Resources */ = {isa = PBXBuildFile; fileRef = E2E742BD1344B15700DFBB2A /* Bring_Banks.kml */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +92,9 @@
 		E2E3D0271346233E00EFB0B7 /* BringBankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BringBankViewController.h; sourceTree = "<group>"; };
 		E2E3D0281346233E00EFB0B7 /* BringBankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BringBankViewController.m; sourceTree = "<group>"; };
 		E2E3D0291346233E00EFB0B7 /* BringBankViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BringBankViewController.xib; sourceTree = "<group>"; };
+		E2E3D03C134786F000EFB0B7 /* BringBanksKMLConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BringBanksKMLConfig.plist; sourceTree = "<group>"; };
+		E2E3D03F13478A9A00EFB0B7 /* BringBanksLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BringBanksLoader.h; sourceTree = "<group>"; };
+		E2E3D04013478A9A00EFB0B7 /* BringBanksLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BringBanksLoader.m; sourceTree = "<group>"; };
 		E2E742BD1344B15700DFBB2A /* Bring_Banks.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Bring_Banks.kml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +127,8 @@
 				28D7ACF70DDB3853001CB0EB /* BringBanksViewController.m */,
 				E26FFA7812A5B287003FA228 /* BringBank.h */,
 				E26FFA7912A5B287003FA228 /* BringBank.m */,
+				E2E3D03F13478A9A00EFB0B7 /* BringBanksLoader.h */,
+				E2E3D04013478A9A00EFB0B7 /* BringBanksLoader.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -184,6 +191,7 @@
 				2899E5210DE3E06400AC0155 /* BringBanksViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* BringBanks-Info.plist */,
+				E2E3D03C134786F000EFB0B7 /* BringBanksKMLConfig.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -276,6 +284,7 @@
 				E2E3D0241346232100EFB0B7 /* TextilesOff.png in Resources */,
 				E2E3D0251346232100EFB0B7 /* TextilesOff@2x.png in Resources */,
 				E2E3D02B1346233E00EFB0B7 /* BringBankViewController.xib in Resources */,
+				E2E3D03D134786F000EFB0B7 /* BringBanksKMLConfig.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +300,7 @@
 				28D7ACF80DDB3853001CB0EB /* BringBanksViewController.m in Sources */,
 				E26FFA7A12A5B287003FA228 /* BringBank.m in Sources */,
 				E2E3D02A1346233E00EFB0B7 /* BringBankViewController.m in Sources */,
+				E2E3D04113478A9A00EFB0B7 /* BringBanksLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

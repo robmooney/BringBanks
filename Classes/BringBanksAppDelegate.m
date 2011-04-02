@@ -12,16 +12,51 @@
 @implementation BringBanksAppDelegate
 
 @synthesize window = window_;
+@synthesize bringBanksViewController = bringBanksViewController_;
 
 #pragma mark - Application lifecycle
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {   
+    
+    NSFileManager *fileManager = [[NSFileManager alloc] init];    
+    NSString *applicationDocumentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];    
+    NSString *configFilePath = [applicationDocumentsDirectory stringByAppendingPathComponent:@"BringBanksKMLConfig.plist"];
+    
+    if (![fileManager fileExistsAtPath:configFilePath]) {
+        NSString *bundledConfigFilePath = [[NSBundle mainBundle] pathForResource:@"BringBanksKMLConfig" ofType:@"plist"];
+        NSError *error = nil;
+        
+        if (![fileManager copyItemAtPath:bundledConfigFilePath toPath:configFilePath error:&error]) {
+            NSLog(@"%@", error);
+        }
+        
+    }
+    
+    NSString *KMLFilePath = [applicationDocumentsDirectory stringByAppendingPathComponent:@"Bring_Banks.kml"];
+    
+    if (![fileManager fileExistsAtPath:KMLFilePath]) {
+        NSString *bundledKMLFilePath = [[NSBundle mainBundle] pathForResource:@"Bring_Banks" ofType:@"kml"];        
+        NSError *error = nil;
+        
+        if (![fileManager copyItemAtPath:bundledKMLFilePath toPath:KMLFilePath error:&error]) {
+            NSLog(@"%@", error);
+        }
+    }
+    
+    [fileManager release];
+    
+    NSURL *configFileURL = [NSURL fileURLWithPath:configFilePath];    
+    
+    bringBanksLoader_ = [[BringBanksLoader alloc] initWithConfigFileURL:configFileURL];    
+    bringBanksLoader_.delegate = self;
+    [bringBanksLoader_ start];
+    
+    self.window.rootViewController.view.hidden = YES;
     
     [self.window makeKeyAndVisible];
 
     return YES;
 }
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     /*
@@ -60,7 +95,6 @@
      */
 }
 
-
 #pragma mark -
 #pragma mark Memory management
 
@@ -73,8 +107,24 @@
 
 - (void)dealloc {
     [window_ release];
+    [bringBanksViewController_ release];
     [super dealloc];
 }
+
+#pragma mark - Bring banks loader delegate
+
+- (void)bringBanksLoaderDidStartUpdate:(BringBanksLoader *)bringBanksLoader {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+}
+
+- (void)bringBanksLoader:(BringBanksLoader *)bringBanksLoader didLoadBringBanks:(NSArray *)bringBanks {    
+    bringBanksViewController_.bringBanks = bringBanks;    
+    [bringBanksLoader_ release];
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;    
+    self.window.rootViewController.view.hidden = NO;
+}
+
 
 
 @end
