@@ -16,15 +16,8 @@ typedef enum {
 } BringBankMaterialType;
 
 @interface BringBank : NSObject <MKAnnotation> {
-    NSString *ID;
-    NSString *GISID;
-    double weight;
-    NSString *electoralArea;
-    NSString *location;
-    NSString *area;
-    NSString *operatorName;
-    CLLocationCoordinate2D coordinate;
-	BringBankMaterialType materialTypes;
+@private
+    NSString *description_;
 }
 
 @property (nonatomic, copy) NSString *ID;

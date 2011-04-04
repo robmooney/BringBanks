@@ -24,19 +24,19 @@
 
 - (id)initWithConfigFileURL:(NSURL *)configFileURL;
 
-- (void)start;
+- (void)load;
+- (void)checkForUpdate;
 
 @end
 
 @protocol BringBanksLoaderDelegate <NSObject>
 
+// this may be called multiple times if there is an online update
 - (void)bringBanksLoader:(BringBanksLoader *)bringBanksLoader didLoadBringBanks:(NSArray *)bringBanks;
 
 @optional
-// called before data is loaded
-- (void)bringBanksLoaderDidStart:(BringBanksLoader *)bringBanksLoader;
 
-// called when there is a newer data being downloaded from the server
+// called when newer data is being downloaded from the server
 - (void)bringBanksLoaderDidStartUpdate:(BringBanksLoader *)bringBanksLoader;
 
 @end

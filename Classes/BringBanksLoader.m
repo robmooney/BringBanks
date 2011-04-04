@@ -51,14 +51,14 @@
     return self;
 }
 
-- (void)start {
-    
-    if ([self.delegate respondsToSelector:@selector(bringBanksLoaderDidStart:)]) {
-        [self.delegate bringBanksLoaderDidStart:self];
-    }
+- (void)load {    
+    [self loadBringBanksFromData_:[NSData dataWithContentsOfURL:localFileURL_]];
+}
+
+- (void)checkForUpdate {
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:remoteFileURL_];
-        
+    
     [request addValue:lastModified_ forHTTPHeaderField:@"If-Modified-Since"];
     [request addValue:etag_ forHTTPHeaderField:@"If-None-Match"];    
     
@@ -68,11 +68,9 @@
     
     if (connection) {
         receivedData_ = [[NSMutableData data] retain];
-    } else {        
-        [self loadBringBanksFromData_:[NSData dataWithContentsOfURL:localFileURL_]];
     }
-
 }
+
 
 #pragma mark - URL connection delegate
 
@@ -85,8 +83,6 @@
         [connection release];
         [receivedData_ release];        
         receivedData_ = nil;
-        
-        [self loadBringBanksFromData_:[NSData dataWithContentsOfURL:localFileURL_]];
         
     } else {
         
@@ -112,8 +108,6 @@
     [connection release];
     [receivedData_ release];
     receivedData_ = nil;
-    
-    [self loadBringBanksFromData_:[NSData dataWithContentsOfURL:localFileURL_]];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {

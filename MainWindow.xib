@@ -18,7 +18,6 @@
 			<string>IBUICustomObject</string>
 			<string>IBUIToolbar</string>
 			<string>IBUIWindow</string>
-			<string>IBUIImageView</string>
 			<string>IBUINavigationBar</string>
 			<string>IBUINavigationItem</string>
 		</object>
@@ -49,25 +48,6 @@
 			<object class="IBUIWindow" id="117978783">
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
-				<object class="NSMutableArray" key="NSSubviews">
-					<bool key="EncodedWithXMLCoder">YES</bool>
-					<object class="IBUIImageView" id="61614055">
-						<reference key="NSNextResponder" ref="117978783"/>
-						<int key="NSvFlags">256</int>
-						<string key="NSFrameSize">{320, 480}</string>
-						<reference key="NSSuperview" ref="117978783"/>
-						<reference key="NSWindow"/>
-						<bool key="IBUIOpaque">NO</bool>
-						<bool key="IBUIClipsSubviews">YES</bool>
-						<int key="IBUIContentMode">4</int>
-						<bool key="IBUIMultipleTouchEnabled">YES</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<object class="NSCustomResource" key="IBUIImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">Default.png</string>
-						</object>
-					</object>
-				</object>
 				<string key="NSFrameSize">{320, 480}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
@@ -215,7 +195,6 @@
 						<reference key="object" ref="117978783"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="61614055"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -253,11 +232,6 @@
 						<int key="objectID">31</int>
 						<reference key="object" ref="601670746"/>
 						<reference key="parent" ref="531399661"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">38</int>
-						<reference key="object" ref="61614055"/>
-						<reference key="parent" ref="117978783"/>
 					</object>
 				</object>
 			</object>
@@ -421,10 +395,6 @@
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">Default.png</string>
-			<string key="NS.object.0">{320, 480}</string>
-		</object>
 		<string key="IBCocoaTouchPluginVersion">301</string>
 	</data>
 </archive>

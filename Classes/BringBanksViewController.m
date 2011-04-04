@@ -63,6 +63,10 @@
     UIBarButtonItem *flexibleSpace = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease];
     
     self.toolbarItems = [NSArray arrayWithObjects:flexibleSpace, filterBarButton, flexibleSpace, nil];    
+    
+	self.mapView.region = self.allBringBanksRegion;
+    
+    [self showFilteredBringBanks];
 }
 
 #pragma mark - Rotation support
@@ -137,14 +141,14 @@
     [tempCansBringBanks release];
     [tempTextilesBringBanks release];
     
-	self.mapView.region = self.allBringBanksRegion;
-    
     filteredBringBanks_ = bringBanks_;
     
-	[self.mapView addAnnotations:filteredBringBanks_];     
+    if ([self isViewLoaded]) {    
+        [self showFilteredBringBanks];
+    }
 }
 
-- (MKCoordinateRegion)allBringBanksRegion {
+- (MKCoordinateRegion)allBringBanksRegion {    
     
     if (allBringBanksRegion_.span.latitudeDelta == 0.0 && allBringBanksRegion_.span.longitudeDelta == 0.0) {
         CLLocationDegrees minLat = 90.0;
@@ -257,10 +261,12 @@
         CLLocationDistance closestDistance = MAXFLOAT;
         BringBank *closestBringBank = nil;
         
+        CLLocation *userLocation = self.mapView.userLocation.location;
+        
         for (id <MKAnnotation> bringBank in filteredBringBanks_) {
             CLLocation *location = [[CLLocation alloc] initWithLatitude:bringBank.coordinate.latitude 
                                                               longitude:bringBank.coordinate.longitude];
-            CLLocationDistance distance = [location distanceFromLocation:self.mapView.userLocation.location];
+            CLLocationDistance distance = [location distanceFromLocation:userLocation];
             [location release];
             
             if (distance < closestDistance) {

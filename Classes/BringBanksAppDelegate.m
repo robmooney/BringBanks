@@ -49,9 +49,7 @@
     
     bringBanksLoader_ = [[BringBanksLoader alloc] initWithConfigFileURL:configFileURL];    
     bringBanksLoader_.delegate = self;
-    [bringBanksLoader_ start];
-    
-    self.window.rootViewController.view.hidden = YES;
+    [bringBanksLoader_ load];
     
     [self.window makeKeyAndVisible];
 
@@ -85,6 +83,8 @@
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
+    
+    [bringBanksLoader_ checkForUpdate];
 }
 
 
@@ -107,7 +107,8 @@
 
 - (void)dealloc {
     [window_ release];
-    [bringBanksViewController_ release];
+    [bringBanksViewController_ release];   
+    [bringBanksLoader_ release];
     [super dealloc];
 }
 
@@ -118,11 +119,9 @@
 }
 
 - (void)bringBanksLoader:(BringBanksLoader *)bringBanksLoader didLoadBringBanks:(NSArray *)bringBanks {    
-    bringBanksViewController_.bringBanks = bringBanks;    
-    [bringBanksLoader_ release];
+    bringBanksViewController_.bringBanks = bringBanks; 
     
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;    
-    self.window.rootViewController.view.hidden = NO;
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
 
