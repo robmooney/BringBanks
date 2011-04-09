@@ -62,6 +62,13 @@
     UIBarButtonItem *filterBarButton = [[[UIBarButtonItem alloc] initWithCustomView:self.filterControl] autorelease];        
     UIBarButtonItem *flexibleSpace = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease];
     
+    /*UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    
+    [infoButton addTarget:self action:@selector(showAboutScreen:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    UIBarButtonItem *infoBarButton = [[[UIBarButtonItem alloc] initWithCustomView:infoButton] autorelease];  */  
+    
     self.toolbarItems = [NSArray arrayWithObjects:flexibleSpace, filterBarButton, flexibleSpace, nil];    
     
 	self.mapView.region = self.allBringBanksRegion;
@@ -313,6 +320,30 @@
     }
     
     [self showFilteredBringBanks];
+}
+
+- (IBAction)showAboutScreen:(id)sender {
+    aboutViewController_ = [[AboutViewController alloc] initWithNibName:nil bundle:nil];    
+    aboutViewController_.view.frame = [[UIScreen mainScreen] applicationFrame];
+    
+    aboutViewController_.doneButton.target = self;
+    aboutViewController_.doneButton.action = @selector(hideAboutScreen:);
+    
+    [UIView transitionFromView:self.navigationController.view 
+                        toView:aboutViewController_.view 
+                      duration:0.5 
+                       options:UIViewAnimationOptionTransitionFlipFromRight 
+                    completion:NULL];
+}
+
+- (IBAction)hideAboutScreen:(id)sender {    
+    [UIView transitionFromView:aboutViewController_.view
+                        toView:self.navigationController.view 
+                      duration:0.5 
+                       options:UIViewAnimationOptionTransitionFlipFromLeft 
+                    completion:^ (BOOL finished) {
+                        [aboutViewController_ release];
+                    }];
 }
 
 

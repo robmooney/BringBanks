@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "BringBanksLoader.h"
 #import "BringBank.h"
+#import "AboutViewController.h"
 
 @interface BringBanksViewController : UIViewController <MKMapViewDelegate> {
 @private
@@ -17,6 +18,8 @@
     NSArray *cansBringBanks_;
     NSArray *textilesBringBanks_;
     NSArray *filteredBringBanks_;
+    
+    AboutViewController *aboutViewController_;
 }
 
 @property (nonatomic, copy) NSArray *bringBanks;
@@ -31,6 +34,8 @@
 - (IBAction)showNearest:(id)sender;
 - (IBAction)showAll:(id)sender;
 - (IBAction)filterChanged:(UISegmentedControl *)sender;
+- (IBAction)showAboutScreen:(id)sender;
+- (IBAction)hideAboutScreen:(id)sender;
 
 @end
 
