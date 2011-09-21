@@ -148,7 +148,6 @@
 		
 		xmlChar const *currentTagName = NULL;
 		xmlChar const *currentTagValue = NULL;
-		xmlChar *currentNameAttr = NULL;
 		
 		while (YES) {
 			if (!xmlTextReaderRead(reader)) {
@@ -161,94 +160,74 @@
                     
 					currentTagName = xmlTextReaderConstName(reader);
 					
-					if (xmlStrEqual(currentTagName, BAD_CAST "Placemark")) {
+					if (xmlStrEqual(currentTagName, BAD_CAST "Bring_Banks")) {
 						bringBank = [[BringBank alloc] init];
 					}
-					
-					if (xmlStrEqual(currentTagName, BAD_CAST "SimpleData")) {
-						currentNameAttr = xmlTextReaderGetAttribute(reader, BAD_CAST "name");
-					}
+                    
 					continue;
 					
 				case XML_READER_TYPE_END_ELEMENT:		
                     
 					currentTagName = xmlTextReaderConstName(reader);
 					
-					if (xmlStrEqual(currentTagName, BAD_CAST "Placemark")) {
+					if (xmlStrEqual(currentTagName, BAD_CAST "Bring_Banks")) {
                         bringBank.coordinate = coord;
                         [bringBanks addObject:bringBank];
                         [bringBank release];
                         bringBank = nil;
                     }
-					
-					if (currentNameAttr != NULL) {						
-						xmlFree(currentNameAttr);
-						currentNameAttr = NULL;
-					}
-					
+
 					continue;
 					
-				case XML_READER_TYPE_TEXT:
+				case XML_READER_TYPE_TEXT:		
+                    
+                    currentTagValue = xmlTextReaderConstValue(reader);
 					
-					if (xmlStrEqual(currentTagName, BAD_CAST "SimpleData")) {	
-						
-						currentTagValue = xmlTextReaderConstValue(reader);
+					if (xmlStrEqual(currentTagName, BAD_CAST "ID")) {		
+                        bringBank.ID = [NSString stringWithUTF8String:(const char *)currentTagValue];
+                    }
                         
-                        if (xmlStrEqual(currentNameAttr, BAD_CAST "ID_")) {                            
-                            bringBank.ID = [NSString stringWithUTF8String:(const char *)currentTagValue];
+                    if (xmlStrEqual(currentTagName, BAD_CAST "GIS_ID")) {    					
+                        bringBank.GISID = [NSString stringWithUTF8String:(const char *)currentTagValue];
+                    }
+                        
+                    if (xmlStrEqual(currentTagName, BAD_CAST "ELECTORAL_AREA")) {  					
+                        bringBank.electoralArea = [NSString stringWithUTF8String:(const char *)currentTagValue];
+                    } 
+                        
+                    if (xmlStrEqual(currentTagName, BAD_CAST "LOCATION")) {                            
+                        bringBank.location = [NSString stringWithUTF8String:(const char *)currentTagValue];
+                    } 
+                        
+                    if (xmlStrEqual(currentTagName, BAD_CAST "AREA")) {                            
+                        bringBank.area = [NSString stringWithUTF8String:(const char *)currentTagValue];
+                    }
+                        
+                    if (xmlStrEqual(currentTagName, BAD_CAST "GLASS")) {
+                        if (xmlStrEqual(currentTagValue, BAD_CAST "Y")) {
+                            bringBank.materialTypes += BringBankMaterialTypeGlass;
                         }
+                    }    
                         
-                        if (xmlStrEqual(currentNameAttr, BAD_CAST "WEIGHT")) {                            
-                            bringBank.weight = atof((const char *)currentTagValue);
+                    if (xmlStrEqual(currentTagName, BAD_CAST "CANS")) {
+                        if (xmlStrEqual(currentTagValue, BAD_CAST "Y")) {
+                            bringBank.materialTypes += BringBankMaterialTypeCans;
                         }
+                    }   
                         
-                        if (xmlStrEqual(currentNameAttr, BAD_CAST "GIS_ID")) {                            
-                            bringBank.GISID = [NSString stringWithUTF8String:(const char *)currentTagValue];
+                    if (xmlStrEqual(currentTagName, BAD_CAST "TEXTILE")) {
+                        if (xmlStrEqual(currentTagValue, BAD_CAST "Y")) {
+                            bringBank.materialTypes += BringBankMaterialTypeTextiles;
                         }
+                    }
                         
-                        if (xmlStrEqual(currentNameAttr, BAD_CAST "ELECTORAL_Area")) {                            
-                            bringBank.electoralArea = [NSString stringWithUTF8String:(const char *)currentTagValue];
-                        } 
-                        
-                        if (xmlStrEqual(currentNameAttr, BAD_CAST "LOCATION")) {                            
-                            bringBank.location = [NSString stringWithUTF8String:(const char *)currentTagValue];
-                        } 
-                        
-                        if (xmlStrEqual(currentNameAttr, BAD_CAST "AREA")) {                            
-                            bringBank.area = [NSString stringWithUTF8String:(const char *)currentTagValue];
-                        }
-                        
-                        if (xmlStrEqual(currentNameAttr, BAD_CAST "GLASS_OPER")) {                            
-                            bringBank.operatorName = [NSString stringWithUTF8String:(const char *)currentTagValue];
-                        }
-                        
-                        if (xmlStrEqual(currentNameAttr, BAD_CAST "GLASS")) {
-                            if (xmlStrEqual(currentTagValue, BAD_CAST "Y")) {
-								bringBank.materialTypes += BringBankMaterialTypeGlass;
-                            }
-                        }    
-                        
-                        if (xmlStrEqual(currentNameAttr, BAD_CAST "CANS")) {
-                            if (xmlStrEqual(currentTagValue, BAD_CAST "Y")) {
-								bringBank.materialTypes += BringBankMaterialTypeCans;
-                            }
-                        }   
-                        
-                        if (xmlStrEqual(currentNameAttr, BAD_CAST "TEXTILE")) {
-                            if (xmlStrEqual(currentTagValue, BAD_CAST "Y")) {
-								bringBank.materialTypes += BringBankMaterialTypeTextiles;
-                            }
-                        }
-                        
-                        if (xmlStrEqual(currentNameAttr, BAD_CAST "LAT")) {
-                            coord.latitude = atof((const char *)currentTagValue);
-                        }                        
-                        
-                        if (xmlStrEqual(currentNameAttr, BAD_CAST "LONG")) {
-                            coord.longitude = atof((const char *)currentTagValue);
-                        }
-                        
-					}
+                    if (xmlStrEqual(currentTagName, BAD_CAST "LAT")) {
+                        coord.latitude = atof((const char *)currentTagValue);
+                    }                        
+                    
+                    if (xmlStrEqual(currentTagName, BAD_CAST "LONG")) {
+                        coord.longitude = atof((const char *)currentTagValue);
+                    }
 					
 					continue;					
 			}

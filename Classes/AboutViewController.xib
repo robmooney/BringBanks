@@ -80,7 +80,7 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string type="base64-UTF8" key="IBUIText">QnkgUm9iIE1vb25leQoKQmFzZWQgb24gYW4gaWRlYSBieSBKYW5uZXR0ZSBNZW5zY2gKClVzZXMgZGF0
-YSBmcm9tIHRoZSBGaW5nYWwgT3BlbiBEYXRhIFByb2plY3QgLSBodHRwOi8vZGF0YS5maW5nYWwuaWU</string>
+YSBmcm9tIEZpbmdhbCBPcGVuIERhdGEgaHR0cDovL2RhdGEuZmluZ2FsLmllA</string>
 						<object class="NSFont" key="IBUIFont">
 							<string key="NSName">Helvetica</string>
 							<double key="NSSize">14</double>
@@ -130,9 +130,10 @@ YSBmcm9tIHRoZSBGaW5nYWwgT3BlbiBEYXRhIFByb2plY3QgLSBodHRwOi8vZGF0YS5maW5nYWwuaWU<
 					<object class="IBUILabel" id="983232725">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 171}, {280, 59}}</string>
+						<string key="NSFrame">{{20, 181}, {280, 59}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="897634405"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
@@ -189,12 +190,12 @@ YSBmcm9tIHRoZSBGaW5nYWwgT3BlbiBEYXRhIFByb2plY3QgLSBodHRwOi8vZGF0YS5maW5nYWwuaWU<
 					<object class="IBUIImageView" id="897634405">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">256</int>
-						<string key="NSFrame">{{119, 88}, {82, 80}}</string>
+						<string key="NSFrame">{{96, 65}, {128, 128}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="153014510"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
-						<int key="IBUIContentMode">4</int>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
@@ -433,7 +434,7 @@ YSBmcm9tIHRoZSBGaW5nYWwgT3BlbiBEYXRhIFByb2plY3QgLSBodHRwOi8vZGF0YS5maW5nYWwuaWU<
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{320, 416}</string>
-				<string>{82, 80}</string>
+				<string>{128, 128}</string>
 			</object>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">301</string>

@@ -3,12 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>remoteURL</key>
-	<string>http://data.fingal.ie/datasets/kml/Bring_Banks.kml</string>
+	<string>http://data.fingal.ie/datasets/xml/Bring_Banks.xml</string>
 	<key>localURL</key>
-	<string>Bring_Banks.kml</string>
+	<string>Bring_Banks.xml</string>
 	<key>Last-Modified</key>
-	<string>Mon, 15 Nov 2010 10:57:55 GMT</string>
+	<string>Thu, 04 Aug 2011 14:57:58 GMT</string>
 	<key>Etag</key>
-	<string>&quot;74f8d5f4b384cb1:1f37&quot;</string>
+	<string>&quot;1e893de6b652cc1:2262&quot;</string>
 </dict>
 </plist>

@@ -32,10 +32,10 @@
         
     }
     
-    NSString *KMLFilePath = [applicationDocumentsDirectory stringByAppendingPathComponent:@"Bring_Banks.kml"];
+    NSString *KMLFilePath = [applicationDocumentsDirectory stringByAppendingPathComponent:@"Bring_Banks.xml"];
     
     if (![fileManager fileExistsAtPath:KMLFilePath]) {
-        NSString *bundledKMLFilePath = [[NSBundle mainBundle] pathForResource:@"Bring_Banks" ofType:@"kml"];        
+        NSString *bundledKMLFilePath = [[NSBundle mainBundle] pathForResource:@"Bring_Banks" ofType:@"xml"];        
         NSError *error = nil;
         
         if (![fileManager copyItemAtPath:bundledKMLFilePath toPath:KMLFilePath error:&error]) {
